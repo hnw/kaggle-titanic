@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# coding: utf-8
+
 """ Writing my first randomforest code.
 Author : AstroDave
 Date : 23rd September 2012

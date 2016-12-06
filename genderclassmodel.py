@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# coding: utf-8
+
 """ Now that the user can read in a file this creates a model which uses the price, class and gender
 Author : AstroDave
 Date : 18th September 2012
