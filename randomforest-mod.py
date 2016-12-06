@@ -13,6 +13,7 @@ import pandas as pd
 import numpy as np
 import csv as csv
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.grid_search import GridSearchCV
 
 # Data cleanup
 # TRAIN DATA
@@ -95,8 +96,18 @@ test_data = test_df.values
 
 
 print 'Training...'
-forest = RandomForestClassifier(n_estimators=100)
+
+parameters = {
+        'n_estimators'      : [30, 40, 50, 65],
+        'max_features'      : [3, 5, 7],
+        'random_state'      : [0],
+        'min_samples_split' : [3, 5, 10, 15, 20, 25],
+        'max_depth'         : [3, 5, 10, 15, 20, 25]
+}
+forest = GridSearchCV(RandomForestClassifier(), parameters)
 forest = forest.fit( train_data[0::,1::], train_data[0::,0] )
+
+print forest.best_estimator_
 
 print 'Predicting...'
 output = forest.predict(test_data).astype(int)
